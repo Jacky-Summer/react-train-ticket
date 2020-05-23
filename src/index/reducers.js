@@ -33,17 +33,17 @@ export default (state = defaultState, action) => {
     case ACTION_SET_IS_CITY_SELECTOR_VISIBLE:
       return { ...state, isCitySelectorVisible: payload }
     case ACTION_SET_CURRENT_SELECTING_LEFT_CITY:
-      return { ...state, payload }
+      return { ...state, currentSelectingLeftCity: payload }
     case ACTION_SET_CITY_DATA:
       return { ...state, cityData: payload }
     case ACTION_SET_IS_LOADING_CITY_DATA:
       return { ...state, isLoadingCityData: payload }
     case ACTION_SET_IS_DATE_SELECTOR_VISIBLE:
-      return { ...state, payload }
+      return { ...state, isDateSelectorVisible: payload }
     case ACTION_SET_HIGH_SPEED:
       return { ...state, payload }
     case ACTION_SET_DEPART_DATE:
-      return { ...state, payload }
+      return { ...state, departDate: payload }
     default:
       return state
   }

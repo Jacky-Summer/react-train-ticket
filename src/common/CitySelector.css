@@ -68,3 +68,73 @@
   font-family: 'yofont';
   font-style: normal;
 }
+
+.city-list {
+  margin-right: 30px;
+}
+
+.city-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.city-li {
+  display: block;
+  height: 44px;
+  line-height: 44px;
+  padding-left: 25px;
+  border-bottom: 1px solid #e3e6e9;
+  margin-left: 15px;
+}
+.city-li:first-child {
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  background-color: #f2f8fb;
+  padding: 0 15px;
+  margin-left: 0;
+  position: sticky;
+  top: -1px;
+  border-bottom: 0;
+}
+
+.city-index {
+  width: 30px;
+  position: fixed;
+  right: 0;
+  top: 44px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.city-index-item {
+  flex: 1;
+  display: block;
+  text-decoration: none;
+  font-size: 10px;
+  color: #1ba9ba;
+  font-style: normal;
+}
+
+.city-suggest {
+  background-color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 44px;
+  width: 100%;
+  bottom: 0;
+  z-index: 100;
+}
+
+.city-suggest-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.city-suggest-li {
+  list-style: none;
+  padding: 5px 9px 5px 15px;
+  border-bottom: 1px solid #e3e6e9;
+}

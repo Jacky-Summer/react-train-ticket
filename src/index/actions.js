@@ -89,6 +89,13 @@ export function hideDateSelector() {
   }
 }
 
+export function showDateSelector() {
+  return {
+    type: ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
+    payload: true,
+  }
+}
+
 export function exchangeFromTo() {
   return (dispatch, getState) => {
     const { from, to } = getState()
