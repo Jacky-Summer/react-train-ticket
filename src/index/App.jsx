@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -10,6 +10,7 @@ import HighSpeed from './HighSpeed'
 import Submit from './Submit'
 import CitySelector from '../common/CitySelector'
 import DateSelector from '../common/DateSelector'
+import { h0 } from '../common/fp'
 
 import {
   exchangeFromTo,
@@ -19,6 +20,8 @@ import {
   setSelectedCity,
   showDateSelector,
   hideDateSelector,
+  setDepartDate,
+  toggleHighSpeed,
 } from './actions'
 
 function App(props) {
@@ -31,6 +34,7 @@ function App(props) {
     cityData,
     departDate,
     isDateSelectorVisible,
+    highSpeed,
   } = props
   const onBack = () => {
     window.history.back()
@@ -52,18 +56,38 @@ function App(props) {
   }, []) // eslint-disable-line
 
   const dateSelectorCbs = useMemo(() => {
-    return bindActionCreators({ onBack: hideDateSelector }, dispatch)
-  })
+    return bindActionCreators(
+      { onBack: hideDateSelector, onSelect: setDepartDate },
+      dispatch
+    )
+  }, []) // eslint-disable-line
+
+  const onSelectDate = useCallback(day => {
+    if (!day) {
+      return
+    }
+
+    if (day < h0) {
+      return
+    }
+
+    dispatch(setDepartDate(day))
+    dispatch(hideDateSelector())
+  }, []) // eslint-disable-line
+
+  const highSpeedCbs = useMemo(() => {
+    return bindActionCreators({ toggle: toggleHighSpeed }, dispatch)
+  }, []) // eslint-disable-line
 
   return (
     <div>
       <div className='header-wrapper'>
         <Header title='火车票' onBack={onBack} />
       </div>
-      <form className='form'>
+      <form action='./query.html' className='form'>
         <Journey from={from} to={to} {...cbs} />
         <DepartDate time={departDate} {...departDateCbs} />
-        <HighSpeed />
+        <HighSpeed highSpeed={highSpeed} {...highSpeedCbs} />
         <Submit />
       </form>
       <CitySelector
@@ -72,7 +96,11 @@ function App(props) {
         isLoading={isLoadingCityData}
         {...citySelectorCbs}
       />
-      <DateSelector show={isDateSelectorVisible} {...dateSelectorCbs}></DateSelector>
+      <DateSelector
+        show={isDateSelectorVisible}
+        {...dateSelectorCbs}
+        onSelect={onSelectDate}
+      ></DateSelector>
     </div>
   )
 }

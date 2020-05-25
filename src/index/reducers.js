@@ -41,7 +41,7 @@ export default (state = defaultState, action) => {
     case ACTION_SET_IS_DATE_SELECTOR_VISIBLE:
       return { ...state, isDateSelectorVisible: payload }
     case ACTION_SET_HIGH_SPEED:
-      return { ...state, payload }
+      return { ...state, highSpeed: payload }
     case ACTION_SET_DEPART_DATE:
       return { ...state, departDate: payload }
     default:
