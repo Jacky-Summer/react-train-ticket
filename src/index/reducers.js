@@ -24,7 +24,6 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   const { type, payload } = action
-  console.log(action)
   switch (type) {
     case ACTION_SET_FROM: // 设置出发地
       return { ...state, from: payload }

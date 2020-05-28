@@ -2,10 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function App(props) {
-  return <div>App</div>
+  return <div>Order</div>
 }
 
-const mapStateToProps = state => {}
-const mapDispatchToProps = dispatch => {}
+const mapStateToProps = state => {
+  return state
+}
+const mapDispatchToProps = dispatch => {
+  return { dispatch }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

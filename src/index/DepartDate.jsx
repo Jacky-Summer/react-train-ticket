@@ -21,7 +21,7 @@ export default function DepartDate(props) {
     (isToday ? '(今天)' : '')
   return (
     <div className='depart-date' onClick={() => onClick()}>
-      <input type='hidden' name='date' value={departDate} />
+      <input type='hidden' name='date' value={departDateString} />
       {departDateString}
       <span className='depart-week'> {weeString}</span>
     </div>
