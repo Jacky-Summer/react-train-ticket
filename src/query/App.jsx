@@ -39,7 +39,6 @@ import {
 } from './action'
 
 function App(props) {
-  console.log('props', props)
   const {
     trainList,
     from,
