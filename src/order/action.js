@@ -179,8 +179,16 @@ export function createChild() {
     )
   }
 }
-export function removePassenger() {
-  return (dispatch, getState) => {}
+export function removePassenger(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+
+    const newPassengers = passengers.filter(passenger => {
+      return passenger.id !== id && passenger.followAdult !== id
+    })
+
+    dispatch(setPassengers(newPassengers))
+  }
 }
 export function updatePassenger(id, data, keysToBeRemoved = []) {
   return (dispatch, getState) => {
